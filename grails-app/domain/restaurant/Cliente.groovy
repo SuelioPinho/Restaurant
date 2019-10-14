@@ -9,6 +9,9 @@ class Cliente {
     static hasMany = [pedidos:Pedido, produtosPreferidos:Produto]
 
     static constraints = {
+        nome nullable: false, blank: false
+        email email: true, unique: true
+        senha size: 6..10
     }
 
     static mapping = {
