@@ -1,6 +1,6 @@
 ---
 grails:
-    profile: rest-api
+    profile: web
     codegen:
         defaultPackage: restaurant
     gorm:
@@ -14,17 +14,25 @@ info:
         version: '@info.app.version@'
         grailsVersion: '@info.app.grailsVersion@'
 spring:
+    jmx:
+        unique-names: true
     main:
         banner-mode: "off"
     groovy:
         template:
             check-template-location: false
-
-# Spring Actuator Endpoints are Disabled by Default
-endpoints:
-    enabled: false
-    jmx:
-        enabled: true
+    devtools:
+        restart:
+            additional-exclude:
+                - '*.gsp'
+                - '**/*.gsp'
+                - '*.gson'
+                - '**/*.gson'
+                - 'logback.groovy'
+                - '*.properties'
+management:
+    endpoints:
+        enabled-by-default: false
 
 ---
 grails:
@@ -38,22 +46,28 @@ grails:
                         - Presto
                         - Trident
         types:
-            json:
-              - application/json
-              - text/json   
-            hal:
-              - application/hal+json
-              - application/hal+xml  
-            xml:
-              - text/xml
-              - application/xml                                 
+            all: '*/*'
             atom: application/atom+xml
             css: text/css
             csv: text/csv
+            form: application/x-www-form-urlencoded
+            html:
+              - text/html
+              - application/xhtml+xml
             js: text/javascript
+            json:
+              - application/json
+              - text/json
+            multipartForm: multipart/form-data
+            pdf: application/pdf
             rss: application/rss+xml
             text: text/plain
-            all: '*/*'            
+            hal:
+              - application/hal+json
+              - application/hal+xml
+            xml:
+              - text/xml
+              - application/xml
     urlmapping:
         cache:
             maxsize: 1000
@@ -61,6 +75,21 @@ grails:
         defaultScope: singleton
     converters:
         encoding: UTF-8
+    views:
+        default:
+            codec: html
+        gsp:
+            encoding: UTF-8
+            htmlcodec: xml
+            codecs:
+                expression: html
+                scriptlet: html
+                taglib: none
+                staticparts: none
+management:
+    endpoints:
+        jmx:
+            unique-names: true
 
 ---
 hibernate:

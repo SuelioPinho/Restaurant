@@ -4,12 +4,13 @@ class Estoque {
 
     Integer quantidade
     Integer quantidadeMinima
-    Produto produto
+
+    static belongsTo = [produto: Produto]
 
     static constraints = {
         quantidade min: 0
         quantidadeMinima min: 0
-        produto nullable: false
+        produto nullable: true
     }
 
     static mapping = {
