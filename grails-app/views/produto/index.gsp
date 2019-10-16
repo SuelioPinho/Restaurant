@@ -11,8 +11,15 @@
             <g:remoteFunction controller="produto" action="lista" update="divLista"/>
         }
         
-        function deleteClick() {
-            
+        function deleteClick(productId) {
+            $('#deleteBody').html('Você deseja realmente excluir ' + $('td#' + productId).text() + ' ?');
+            $("#modalDelete").modal("show");
+            $("#modalYesButton").attr('onclick', 'modalDeleteClick(' + productId + ')');
+        }
+
+        function modalDeleteClick(id) {
+            $('#notButton').click();
+            <g:remoteFunction controller="produto" action="excluir" update="divLista" id="'+id+'"/>
         }
     </script>
 </head>
@@ -26,7 +33,7 @@
     </div>
     </div>
     <div id="divLista" class="card-body">
-        <g:render template="lista" model="{produtos: produtos}"></g:render>
+        <g:render template="lista" model="{produtos: produtos}"/>
     </div>
     <div id="divMensagem"></div>
 
@@ -42,9 +49,6 @@
                 <div id="divForm" class="modal-body">
 
                 </div>
-%{--                <div class="modal-footer">--}%
-%{--                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}%
-%{--                </div>--}%
             </div>
         </div>
     </div>
@@ -59,12 +63,12 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div id="deleteBody" class="modal-body">
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                    <button type="button" class="btn btn-primary">Sim</button>
+                    <button id="notButton" type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <button id="modalYesButton" type="button" class="btn btn-primary">Sim</button>
                 </div>
             </div>
         </div>

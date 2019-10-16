@@ -52,4 +52,13 @@ class ProdutoController {
             render("Deu erro")
         }
     }
+
+    def excluir() {
+        Produto produto = Produto.get(params.id)
+        Produto.withTransaction {
+            produto.delete(flush: true)
+        }
+        def lista = Produto.list()
+        render(template: "/produto/lista", model: [produtos: lista])
+    }
 }

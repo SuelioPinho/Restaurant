@@ -12,13 +12,13 @@
         <tbody>
         <g:each var="produto" in="${produtos}">
             <tr>
-                <td>${produto.nome}</td>
+                <td id="${produto.id}">${produto.nome}</td>
                 <td>${produto.preco}</td>
                 <td>${produto.estoque.quantidade}</td>
                 <td>${produto.estoque.quantidadeMinima}</td>
                 <td>
                     <g:remoteLink controller="produto" action="alterar" update="divForm" id="${produto.id}" data-toggle="modal" data-target="#modalTable"><i class="large material-icons">create</i></g:remoteLink>
-                    <g:remoteLink controller="produto" action="exluir" update="divForm" id="${produto.id}" data-toggle="modal" data-target="#modalDelete"><i class="large material-icons">delete</i></g:remoteLink>
+                    <i class="large material-icons" style="cursor:pointer;  color:#2559a7;" onclick="deleteClick(${produto.id})" >delete</i>
                 </td>
             </tr>
         </g:each>

@@ -108,7 +108,9 @@ dataSource:
 environments:
     development:
         server:
-            contextPath: /restaurant
+            servlet:
+                context-path: /restaurant
+
         dataSource:
             dbCreate: update
             url: jdbc:mysql://localhost:3306/restaurant?useSSL=false
