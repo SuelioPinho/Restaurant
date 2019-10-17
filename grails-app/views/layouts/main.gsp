@@ -16,6 +16,7 @@
 
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <img class="form-signin" style="margin-right: 16px;" src="https://image.flaticon.com/icons/svg/320/320366.svg" alt="" width="44" height="44">
     <a class="navbar-brand" href="#">Restaurante</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -24,7 +25,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/restaurant">Home <span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
